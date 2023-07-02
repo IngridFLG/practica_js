@@ -85,10 +85,28 @@ const invoices = [
  const invoiceById = (id) => {
     return invoices.find(i => i.id === id);
  }
+
+ const findInvoiceById = (id) => {
+   const promise = new Promise((resolve, reject) => {
+
+      setTimeout(() => {
+         const result = invoiceById(id);
+   
+         if(result){
+            resolve(result);
+         }else {
+            reject('Error!! no existe la factura');
+         }
+         
+      }, 2500);
+   });
+   return promise;
+}
   
 export {
     papper,
     invoices,
     invoiceByName,
-    invoiceById
+    invoiceById,
+    findInvoiceById
 }
